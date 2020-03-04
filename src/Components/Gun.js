@@ -18,42 +18,35 @@ function Gun({match, location}) {
   };
 
   useEffect(() => {
-    if (gunInfo.length < 0) return(<p>Loading data...</p>)
     fetchData();
     
   }, [])
-  
-  console.log(firingMode.length)
 
   function weaponType(param) {
     switch(param) {
       case "assault_rifle":
         return "Assault Rifle";
-        break;
 
       case "assault_carbine":
         return "Assault Carbine";
-        break;
 
       case "light_machine_gun":
         return "Light Machine Gun";
-        break;
 
       case "shotgun":
         return "Shotgun";
-        break;
 
       case "pistol":
         return "Pistol";
-        break;
 
       case "marksman_rifle":
         return "Marksman Rifle";
-        break;
 
       case "sniper_rifle":
         return "Sniper Rifle";
-        break;
+
+      default:
+        return "";
     }
   }
 
@@ -61,11 +54,12 @@ function Gun({match, location}) {
     switch(param) {
       case 2:
         return "Single Fire";
-        break;
 
       case 3:
         return "Single Fire, Full Auto";
-        break;
+
+      default:
+        return "";
     }
   }
 

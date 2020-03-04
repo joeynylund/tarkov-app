@@ -4,8 +4,6 @@ import api from '../api'
 
 function Guns() {
 
-  let [select, setSelect] = useState('')
-
   let [searchString, setSearchString] = useState('')
 
   const [guns, setGuns] = useState([])
@@ -21,37 +19,33 @@ function Guns() {
 
     fetchData();  
     
-  }, [])
+  }, [guns])
 
   function weaponType(param) {
     switch(param) {
       case "assault_rifle":
         return "Assault Rifle";
-        break;
 
       case "assault_carbine":
         return "Assault Carbine";
-        break;
 
       case "light_machine_gun":
         return "Light Machine Gun";
-        break;
 
       case "shotgun":
         return "Shotgun";
-        break;
 
       case "pistol":
         return "Pistol";
-        break;
 
       case "marksman_rifle":
         return "Marksman Rifle";
-        break;
 
       case "sniper_rifle":
         return "Sniper Rifle";
-        break;
+
+      default:
+        return "";
     }
   }
   
