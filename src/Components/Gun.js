@@ -19,7 +19,7 @@ function Gun({match, location}) {
 
   useEffect(() => {
     fetchData();
-    
+    // eslint-disable-next-line
   }, [])
 
   function weaponType(param) {
@@ -66,6 +66,8 @@ function Gun({match, location}) {
       return (
         
         <div className="container">
+          {gunInfo.length === 0 && <p>Loading data...</p>}
+          {gunInfo.length !== 0 && <div>
           <div className="row">
             <h1 style={{textTransform: "capitalize"}}>{match.params.gunName}</h1>
           </div>
@@ -86,7 +88,8 @@ function Gun({match, location}) {
           </div>
           <div className="row">
             <h6 style={{textTransform: "capitalize"}}>Ammo Caliber: {gunInfo.caliber_used}</h6>
-          </div>
+          </div></div>
+          }
           
         </div>
 

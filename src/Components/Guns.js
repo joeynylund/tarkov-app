@@ -66,6 +66,7 @@ function Guns() {
             </div>
             </div>
             <div className="row">
+            {guns.length === 0 && <p>Loading data...</p>}
             { searchString.length > 0 ? (filtered.map(gun => (
               <div key={gun.id} className="col-sm-12 col-md-4 col-lg-3">
               <Link to={{
