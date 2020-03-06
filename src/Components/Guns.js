@@ -52,17 +52,17 @@ function Guns() {
   return(
     <div className="container">
           <div className="row">
-            <div className="float-left">
-              <h1 style={{textTransform: "capitalize"}}>Guns</h1>
+            <div className="col-sm-9 col-md-9 col-lg-9">
+              <h1 className="title" style={{textTransform: "capitalize"}}>Guns</h1>
               </div>
-            <div className="float-right"><input className="float-right" type="text" value={searchString} onChange={(e) => {
+            <div className="col-sm-3 col-md-3 col-lg-3"><input className="float-right" type="text" style={{marginTop: '20px'}} value={searchString} onChange={(e) => {
               setFiltered(guns)
               const test = guns.filter(gun => {
                 return gun.name_of_gun.toLowerCase().includes(e.target.value.toLowerCase())
               });
               setFiltered(test)
               setSearchString(e.target.value)
-            }} placeholder="Type here" />
+            }} placeholder="Filter by name" />
             </div>
             </div>
             <div className="row">
@@ -76,7 +76,7 @@ function Guns() {
                   imageID: gun.gun_image
                 }
               }}>
-              <div className="card text-white bg-success mb-3">
+              <div className="card text-white card-bg-gray mb-3">
                 <div className="card-body">
                   <h4 className="card-title" style={{textTransform: "capitalize"}}>{gun.name_of_gun}</h4>
                   <h6 className="card-title" style={{textTransform: "capitalize"}}>{weaponType(gun.weapon_type)}</h6>
@@ -93,7 +93,7 @@ function Guns() {
                   imageID: gun.gun_image
                 }
               }}>
-              <div className="card text-white bg-success mb-3">
+              <div className="card text-white card-bg-gray mb-3">
                 <div className="card-body">
                   <h4 className="card-title" style={{textTransform: "capitalize"}}>{gun.name_of_gun}</h4>
                   <h6 className="card-title" style={{textTransform: "capitalize"}}>{weaponType(gun.weapon_type)}</h6>

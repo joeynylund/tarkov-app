@@ -28,7 +28,7 @@ class Home extends Component {
 
               <div key={question.collection} className="col-sm-12 col-md-4 col-lg-3">
                 <Link to={`/${question.collection}`}>
-                  <div className="card text-white bg-success mb-3">
+                  <div className="card text-white card-bg-gray mb-3">
                     <div className="card-body">
                       <h4 className="card-title" style={{textTransform: "capitalize"}}>{question.collection}</h4>
                     </div>

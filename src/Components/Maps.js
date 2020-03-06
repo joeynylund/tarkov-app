@@ -1,51 +1,50 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import api from '../api'
 
-class Collection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: null,
+function Maps() {
+
+  const [maps, setMaps] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.get('https://nylund.dev/tarkov/public/_/items/maps?access_token=1234')
+      setMaps(result.data.data)
+      return maps
     };
-  }
 
-  async componentDidMount() {
-    const { match: { params } } = this.props;
-    const questions = (await axios.get(`https://nylund.dev/tarkov/public/_/items/${params.questionCollection}?access_token=1234`)).data;
-    this.setState({
-      questions: questions.data,
-      title: params.questionCollection
-    });
-  }
+    fetchData();  
+    
+  }, [])
 
-
-render() {
-      return (
-        <div className="container">
+  return(
+    <div className="container">
           <div className="row">
-            <h1 style={{textTransform: "capitalize"}}>{this.state.title}</h1>
+            <div className="float-left">
+              <h1 className="title" style={{textTransform: "capitalize"}}>Maps</h1>
+              </div>
             </div>
             <div className="row">
-            {this.state.questions === null && <p>Loading questions...</p>}
-            {
-              this.state.questions && this.state.questions.map(question =>  (
-  
-                <div key={question.id} className="col-sm-12 col-md-4 col-lg-3">
-                  <div className="card text-white bg-success mb-3">
-                    <div className="card-body">
-                      <h4 className="card-title" style={{textTransform: "capitalize"}}>{question.caliber_of_ammo}</h4>
-                    </div>
-                  </div>
+            {maps.length === 0 && <p>Loading maps...</p>}
+            {maps.length !== 0 && maps.map(map => (
+              <div key={map.id} className="col-sm-12 col-md-4 col-lg-3">
+              <Link to={{
+                pathname: "/maps/" + map.map_name,
+              }}>
+              <div className="card text-white card-bg-gray mb-3">
+                <div className="card-body">
+                  <img style={{width: '100%'}} src={'https://nylund.dev/tarkov/public/uploads/_/originals/' + map.map_name + '_thumb.png'} alt={map.map_name} />
+                  <h4 className="card-title" style={{textTransform: "capitalize", marginTop: '20px'}}>{map.map_name}</h4>
+                  <h6 className="" style={{textTransform: "capitalize"}}>{map.duration}</h6>
+                  <p className="" style={{textTransform: "capitalize"}}>Players: {map.players}</p>
+                </div>
               </div>
-            
-              ))}
+              </Link>
           </div>
-        </div>
-      );
+            ))}
+            </div>
+          </div>
+  )
+}
 
-  }
-  
-          }
-
-
-export default Collection;
+export default Maps;

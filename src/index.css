@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
+  color: #fff;
+}
+
+.title {
+  color: #fff;
+}
+
+.navbar-gray {
+  background-color: #272727;
+  color: #fff;
+}
+
+.navbar-brand {
+  color: #fff;
+}
+
+.navbar-brand:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.card-bg-gray {
+  background-color: #303030;
+  color: rgba(255, 255, 255, 0.87) !important
+}
+
+.card-bg-gray:hover {
+  background-color: #424242;
+  transition: 500ms;
+  color: rgba(255, 255, 255, 0.87) !important
+}
+
+a:hover {
+  text-decoration: none!important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .gun-image {
+    width: 100%;
+    height: auto;
+  }
 }
