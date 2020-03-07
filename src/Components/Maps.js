@@ -19,15 +19,11 @@ function Maps() {
 
   return(
     <div className="container">
-          <div className="row">
-            <div className="float-left">
-              <h1 className="title" style={{textTransform: "capitalize"}}>Maps</h1>
-              </div>
-            </div>
-            <div className="row">
-            {maps.length === 0 && <p>Loading maps...</p>}
-            {maps.length !== 0 && maps.map(map => (
-              <div key={map.id} className="col-sm-12 col-md-4 col-lg-3">
+      <h1 className="title" style={{textTransform: "capitalize"}}>Maps</h1>
+        <div className="row">
+          {maps.length === 0 && <p>Loading maps...</p>}
+          {maps.length !== 0 && maps.map(map => (
+            <div key={map.id} className="col-sm-12 col-md-4 col-lg-3">
               <Link to={{
                 pathname: "/maps/" + map.map_name,
               }}>
