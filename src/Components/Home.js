@@ -26,7 +26,7 @@ class Home extends Component {
           {
             this.state.questions && this.state.questions.map(question => question.managed === true ? (
 
-              <div key={question.collection} className="col-sm-12 col-md-4 col-lg-3">
+              <div key={question.collection} className="col-sm-12 col-md-6 col-lg-3">
                 <Link to={`/${question.collection}`}>
                   <div className="card text-white card-bg-gray mb-3">
                     <div className="card-body">

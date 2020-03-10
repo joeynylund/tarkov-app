@@ -5,11 +5,9 @@ function Gun({match, location}) {
 
   const [gunInfo, setGunInfo] = useState([]);
 
-  const [gunImage, setGunImage] = useState('');
-
   const fetchData = async () => {
     const result = await api.get('https://nylund.dev/tarkov/public/_/items/guns?access_token=1234')
-    setGunInfo(result.data.data.filter(gun => gun.name_of_gun.match(match.params.gunName)))
+    setGunInfo(result.data.data.filter(gun => gun.name_of_gun.endsWith(match.params.gunName)))
 
   };
 
@@ -58,18 +56,6 @@ function Gun({match, location}) {
         return "";
     }
   }
-
-
-  const FetchImage = (props) => {
-    
-    fetch('https://nylund.dev/tarkov/public/_/files/' + props.id + '?access_token=1234')
-    .then(response => response.json())
-    .then(data => {
-      setGunImage(data.data.filename);
-      })
-      return <img className="gun-image" src={'https://nylund.dev/tarkov/public/uploads/_/originals/' + gunImage} />
-  }
-
       return (
         
         <div className="container">
@@ -85,7 +71,7 @@ function Gun({match, location}) {
             <h6 style={{textTransform: "capitalize"}}>Firing Mode: {firing_Mode(gun.firing_mode.length)}</h6>
           </div>
           <div className="row">
-            <FetchImage id={gun.gun_image} />
+            <img alt={gun.name_of_gun} className="gun-image" src={'https://nylund.dev/tarkov/public/uploads/_/originals/' + gun.name_of_gun + '.png'} />
           </div>
           <div className="row">
             <h6 style={{textTransform: "capitalize"}}>Vertical Recoil: {gun.vertical_recoil}</h6>
