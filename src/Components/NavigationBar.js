@@ -20,23 +20,24 @@ function NavigationBar() {
   return (
     <div>
       <Navbar dark className="navbar navbar-gray fixed-top" expand="lg">
-        <NavbarBrand href="/">Tarkov</NavbarBrand>
+        <NavbarBrand href="/">Nylund's Tarkov App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Ammo</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/components/">Armor</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/components/">Guns</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/components/">Maps</NavLink>
-            </NavItem>
+            
           </Nav>
+          <NavbarText>
+              <NavLink href="/components/">Ammo</NavLink>
+            </NavbarText>
+            <NavbarText>
+              <NavLink href="/components/">Armor</NavLink>
+            </NavbarText>
+            <NavbarText>
+              <NavLink href="/components/">Guns</NavLink>
+            </NavbarText>
+            <NavbarText>
+              <NavLink href="/components/">Maps</NavLink>
+            </NavbarText>
         </Collapse>
       </Navbar>
     </div>

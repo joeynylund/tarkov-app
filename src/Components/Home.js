@@ -16,6 +16,7 @@ class Home extends Component {
     this.setState({
       questions: questions.data,
     });
+    
   }
 
   render() {
@@ -37,6 +38,9 @@ class Home extends Component {
               </div>
             ): ( <div></div>)
             )}
+        </div>
+        <div className="row">
+
         </div>
       </div>
     )

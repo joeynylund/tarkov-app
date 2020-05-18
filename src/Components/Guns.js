@@ -19,7 +19,7 @@ function Guns() {
 
     fetchData();  
     
-  }, [guns])
+  }, [])
 
   function weaponType(param) {
     switch(param) {

@@ -6,8 +6,8 @@ function Gun({match, location}) {
   const [gunInfo, setGunInfo] = useState([]);
 
   const fetchData = async () => {
-    const result = await api.get('https://nylund.dev/tarkov/public/_/items/guns?access_token=1234')
-    setGunInfo(result.data.data.filter(gun => gun.name_of_gun.endsWith(match.params.gunName)))
+    const result = await api.get('https://nylund.dev/tarkov/public/_/items/guns?filter[name_of_gun][%3D]=' + match.params.gunName + '&access_token=1234')
+    setGunInfo(result.data.data.filter(gun => gun.name_of_gun.match(match.params.gunName)))
 
   };
 
