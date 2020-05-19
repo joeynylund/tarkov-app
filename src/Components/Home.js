@@ -1,37 +1,31 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+function Home() {
+  const [collections, setCollections] = useState([])
 
-    this.state = {
-      questions: null,
-    };
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetch = (await axios.get('https://nylund.dev/tarkov/public/_/collections?access_token=1234')).data;
+      setCollections(fetch.data)
+    }
 
-  async componentDidMount() {
-    const questions = (await axios.get('https://nylund.dev/tarkov/public/_/collections?access_token=1234')).data;
-    this.setState({
-      questions: questions.data,
-    });
-    
-  }
+    fetchData()
+  })
 
-  render() {
     return (
       <div className="container">
         <div className="row">
-          {this.state.questions === null && <p>Loading data...</p>}
+          {collections === '' && <p>Loading data...</p>}
           {
-            this.state.questions && this.state.questions.map(question => question.managed === true ? (
+            collections && collections.map(element => element.managed === true ? (
 
-              <div key={question.collection} className="col-sm-12 col-md-6 col-lg-3">
-                <Link to={`/${question.collection}`}>
+              <div key={element.collection} className="col-sm-12 col-md-6 col-lg-3">
+                <Link to={`/${element.collection}`}>
                   <div className="card text-white card-bg-gray mb-3">
                     <div className="card-body">
-                      <h4 className="card-title" style={{textTransform: "capitalize"}}>{question.collection}</h4>
+                      <h4 className="card-title" style={{textTransform: "capitalize"}}>{element.collection}</h4>
                     </div>
                   </div>
                   </Link>
@@ -45,6 +39,6 @@ class Home extends Component {
       </div>
     )
   }
-}
+
 
 export default Home;
