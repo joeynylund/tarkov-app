@@ -27,16 +27,16 @@ function NavigationBar() {
             
           </Nav>
           <NavbarText>
-              <NavLink href="/components/">Ammo</NavLink>
+              <NavLink href="/ammo/">Ammo</NavLink>
             </NavbarText>
             <NavbarText>
-              <NavLink href="/components/">Armor</NavLink>
+              <NavLink href="/armor/">Armor</NavLink>
             </NavbarText>
             <NavbarText>
-              <NavLink href="/components/">Guns</NavLink>
+              <NavLink href="/guns/">Guns</NavLink>
             </NavbarText>
             <NavbarText>
-              <NavLink href="/components/">Maps</NavLink>
+              <NavLink href="/maps/">Maps</NavLink>
             </NavbarText>
         </Collapse>
       </Navbar>
